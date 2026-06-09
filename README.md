@@ -262,6 +262,6 @@ Feel free to use, modify, and distribute this project.
 
 ## Author
 
-**Darshan Rathod**
+**Darshan Repale**
 
 GitHub: https://github.com/DarshanR1234
