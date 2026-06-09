@@ -7,7 +7,8 @@ from langchain_core.output_parsers import StrOutputParser
 
 search_tool = TavilySearchResults(max_result = 5)
 
-llm = ChatMistralAI(model = "mistral-small-2506")
+llm = ChatMistralAI(model = "mistral-small-2506"
+                    )
 
 prompt = ChatPromptTemplate.from_template(
     """
@@ -21,13 +22,18 @@ summarize the following news into clear bullet points
 
 chain = prompt | llm | StrOutputParser()
 
-news_result = search_tool.run("Latest AI news of 2026 ")
+while True:
+    query = input("Enter your news query (or 'exit' to quit): ").strip()
+    if query.lower() in ('exit', 'quit', 'q'):
+        print("Goodbye.")
+        break
 
-result = chain.invoke({"news" : news_result})
+    news_result = search_tool.run(query)
+    result = chain.invoke({"news": news_result})
 
-print(result)
+    print("\nSummary:\n")
+    print(result)
+    print("\n---\n")
 
 
-print(search_tool.description)
-print(search_tool.name)
-print(search_tool.args)
+
