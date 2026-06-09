@@ -1,0 +1,3 @@
+dotenv
+langchain_mistralai
+langchain_community
