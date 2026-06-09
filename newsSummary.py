@@ -1,6 +1,4 @@
 from dotenv import load_dotenv
-import os
-
 from langchain_community.tools.tavily_search import TavilySearchResults
 from langchain_mistralai import ChatMistralAI
 from langchain_core.prompts import ChatPromptTemplate
@@ -9,13 +7,8 @@ from langchain_core.output_parsers import StrOutputParser
 # Load environment variables
 load_dotenv()
 
-<<<<<<< HEAD
-llm = ChatMistralAI(model = "mistral-small-2506"
-                    )
-=======
 # Initialize Tavily Search Tool
 search_tool = TavilySearchResults(max_results=5)
->>>>>>> 3248a47 (updatedd  news summarizer)
 
 # Initialize Mistral LLM
 llm = ChatMistralAI(
@@ -44,23 +37,6 @@ News Content:
 # Create LangChain pipeline
 chain = prompt | llm | StrOutputParser()
 
-<<<<<<< HEAD
-while True:
-    query = input("Enter your news query (or 'exit' to quit): ").strip()
-    if query.lower() in ('exit', 'quit', 'q'):
-        print("Goodbye.")
-        break
-
-    news_result = search_tool.run(query)
-    result = chain.invoke({"news": news_result})
-
-    print("\nSummary:\n")
-    print(result)
-    print("\n---\n")
-
-
-
-=======
 
 def summarize_news(topic: str):
     try:
@@ -100,4 +76,3 @@ def main():
 
 if __name__ == "__main__":
     main()
->>>>>>> 3248a47 (updatedd  news summarizer)
